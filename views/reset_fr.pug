@@ -1,0 +1,11 @@
+extends layout_fr
+
+block content
+	.inner
+		form.form(method="POST")
+			h2 Réinitialisez votre mot de passe
+			label(for="password") Mot De Passe
+			input(type="password" name="password")
+			label(for="confirm-password") Confirmez le mot de passe
+			input(type="password" name="confirm-password")
+			input.button(type="submit" value="Réinitialiser le mot de passe")

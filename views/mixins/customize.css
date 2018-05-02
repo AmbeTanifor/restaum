@@ -1,0 +1,29 @@
+.langWrapper{
+	wigth:60%;
+	border:2px solid blue;
+}
+.langBand{
+display: inline-block;
+}
+
+.langVersion{
+	max-height: 45px;
+	padding-top: 20px ;
+	font-size: 1em;
+	text-align:center;
+}
+.langVersion a{
+	text-decoration: none;
+}
+.brandtxt{
+	margin-top: 20px;
+	margin-bottom: 2px;
+	font-size: 1.5em;
+	color:#fff;
+	text-align:center;
+	}
+@media (max-width:768px){
+.brandtxt{
+	font-size: 10pt;
+	}	
+}

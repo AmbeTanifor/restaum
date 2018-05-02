@@ -1,0 +1,29 @@
+mixin storeForm(store = {})
+	form(action=`/add/${store._id || ''}` method="POST" class="card" enctype="multipart/form-data")
+		input(type="hidden" name="codeowner" value=accessCode)
+		label(for="name") Name 
+		input(type="text" name="name" class="text-input" autofocus value=store.name)
+		label(for="description")
+		textarea(name="description" placeholder="Please provide type of cuisin e.g: the continent, or country like Congolese, American, Indian  or Chinese cuisin ")= store.description
+		//- Image upload
+		label(for="photo") Photo
+		input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
+		if store.photo
+			img(src=`/uploads/${store.photo}`, alt=store.name width=200)
+		label(for="telnumber") Tel: Nunber
+		input(type="text" name="telnumber"  class="text-input" placeholder="Include country code" value=store.telnumber)
+		//- address, lng and lat
+		label(for="address") Address
+		input(type="text" id="address" class="text-input" name="location[address]" value=(store.location && store.location.address))
+		label(for="lng") Address Lng
+		input(type="text" id="lng" class="text-input" name="location[coordinates][0]" value=(store.location && store.location.coordinates[0]) required)
+		label(for="lat") Address Lat
+		input(type="text" id="lat" class="text-input" name="location[coordinates][1]" value=(store.location && store.location.coordinates[1]) required)
+		- const choices = ['Wifi', 'Opens Late', 'Family Friendly', 'Vegetarian', 'Licensed']
+		- const tags = store.tags || []
+		ul.tags
+			each choice in choices
+				.tag.tag__choice
+					input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+					label(for=choic) #{choice}
+		input(type="submit" value="Save -<" class="button")

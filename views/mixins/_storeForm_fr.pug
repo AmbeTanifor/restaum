@@ -1,0 +1,29 @@
+mixin storeFormfr(store = {})
+	form(action=`/addfr/${store._id || ''}` method="POST" class="card" enctype="multipart/form-data")
+		input(type="hidden" name="codeowner" value=accessCode)
+		label(for="name") Nom 
+		input(type="text" name="name" class="text-input" autofocus value=store.name)
+		label(for="description")
+		textarea(name="description" placeholder="S'il vous plaît fournir le type de cuisin e.g: le continent, ou le pays comme cuisin congolais, américain, indien ou chinois")= store.description
+		//- Image upload
+		label(for="photo") Photo
+		input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
+		if store.photo
+			img(src=`/uploads/${store.photo}`, alt=store.name width=200)
+		label(for="telnumber") Numero du Telephone
+		input(type="text" name="telnumber" class="text-input" placeholder="Include country code" value=store.telnumber)
+		//- address lng lat
+		label(for="address") Adresse
+		input(type="text" id="address" class="text-input" name="location[address]" value=(store.location && store.location.address))
+		label(for="lng") Adresse Longitude
+		input(type="text" id="lng" class="text-input" name="location[coordinates][0]" value=(store.location && store.location.coordinates[0]) required)
+		label(for="lat") Adresse Lattitude
+		input(type="text" id="lat" class="text-input" name="location[coordinates][1]" value=(store.location && store.location.coordinates[1]) required)
+		- const choices = ['Wifi', 'Ouvre tard', 'Conviviale Familiale', 'Végétarien', 'Autorisé']
+		- const tags = store.tags || []
+		ul.tags
+			each choice in choices
+				.tag.tag__choice
+					input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+					label(for=choic) #{choice}
+		input(type="submit" value="Enregistrer -<" class="button")

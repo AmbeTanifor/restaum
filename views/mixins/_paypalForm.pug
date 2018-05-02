@@ -1,0 +1,24 @@
+mixin payPalForm()
+
+	#visawrapperId.visawrapper
+			form.form(acion="/bnk" method="POST" id="myVisaForm")
+				.visafields
+					h2 Enter payment details for PayPal
+					label(for="nameoncard") Name on card
+					input(type="text" name="nameoncard")
+					label(for="cardnumber") Number on Card
+					input(type="number" name="cardnumber")
+					label(for="dateexpire") Expiry Date
+					input(type="date" name="dateexpire")
+					label(for="securitycode") Security Code
+					input(type="number" name="securitycode" max-width="3")
+					label(for="email") Email
+					input(type="email" name="email")
+					label(for="password") Password
+					input(type="password" name="password")
+					input.button(type="submit" value="Log In ")
+				.visaprice
+					h3 Your subscription is 1 year
+					h2 $ 60
+
+					

@@ -1,0 +1,9 @@
+mixin currencyForm(fooditem = {})
+	form.form(action="/currency" method="POST")
+		h2 Add the currency type
+		label(for="currency") Currency
+		input(type="text" name="currency" class="text-input")
+		label(for="currname") Currencyn Name
+		input(type="text" name="currname" class="text-input")
+		input(type="text" name="restauid" class="text-input" value=fooditem._id )
+		input.button(type="submit" value="Send the Currency")

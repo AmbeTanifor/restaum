@@ -1,0 +1,14 @@
+extends layout
+
+include mixins/_storeForm
+
+block content
+	.inner
+		.titleStore-Addmenu
+			div
+				h3 #{title}
+			if store
+				strong OR
+				.newfoodmenu
+					a(href=`/newmenu/${store.id}` class="btn btn-primary btn-lg" role="button") Add A Menu Item To Restaurant
+		+storeForm(store)

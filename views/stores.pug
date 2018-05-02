@@ -1,0 +1,15 @@
+extends layout
+
+include mixins/_storeCard
+include mixins/_pagination
+include mixins/_langBand_fr
+
+block container
+	+langBandFr()
+	
+block content
+	.inner
+		.stores
+			each store in stores
+				+storeCard(store)
+		+pagination(page, pages, count)

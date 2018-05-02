@@ -1,0 +1,10 @@
+extends layout_fr
+
+block content
+	.inner
+		h2= title
+		.map
+			.autocomplete
+				input.autocomplete__input(type="text" placeholder="Recherche restaurant: Pour de meilleurs résultats, Commencer par [la ville, localité, restaurant] ou [la ville, restaurant]" name="geolocatefr")
+			#mapfr
+				p Chargement de la carte...

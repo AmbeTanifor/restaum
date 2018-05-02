@@ -1,0 +1,30 @@
+mixin menuForm(fooditem = {})
+    form(action=`/newmenu/${fooditem._id || ''}` method="POST" class="card")
+        label(for="category") Select a foods or drinks category
+        select(name="category" )
+            - const choices = ['Main Course', 'Salad', 'Sandwich', 'Dessert', 'Juice', 'Beer', 'Wine', 'Whisky', 'Chanpagne', 'Cake or Pastry']
+            - const category = fooditem.category || []
+                each choice in choices
+                    option(value=choice selected=(category.includes(choice))) #{choice}
+
+        label(for="itemname") Name
+        input(type="text" name="itemname" class="text-input" value=fooditem.itemname)
+        label(for="description") Description
+        textarea(name="description" value=fooditem.description)
+        label(for="measurement") Measurement
+        input(type="text" name="measurement" class="text-input" value=fooditem.measurement)
+        label(for="price") Price
+        input(type="text" name="price" class="text-input" value=fooditem.price)
+        label(for="currsymbol") Currency
+        select(name="currsymbol") 
+            - const currencysymbols = currencies
+            - const symbol = fooditem.currsymbol || []
+                each currencysymbol in currencysymbols
+                    option(value=currencysymbol.currency selected=(symbol.includes(currencysymbol))) #{currencysymbol.currency} #{currencysymbol.currname}
+            
+
+        if storeid
+            input(type="hidden" name="restauid" class="text-input" value=storeid )
+        else
+            input(type="hidden" name="restauid" class="text-input" value=fooditem.restauid )
+        input(type="submit" value="Save →" class="button")

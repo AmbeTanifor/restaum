@@ -1,0 +1,21 @@
+extends layout
+
+block content
+	.inner
+		.centerthis
+			h2= title
+			p.centerthis If you have mad your payment, submit your Code bellow
+		.codeorchoice
+			form(action="/check" method="POST")
+				.codeinput
+					input.text-input(type="text" name="accesscode"  required)
+				.submitbutton
+					input.btn.btn-primary(type="submit" value="Submit Code")
+
+		.centerthis
+			h2 OR
+
+		form(action="/dues" method="POST")
+			.codeorchoice
+				.paychoice
+					input.btn.btn-warning.paychoice-btn(type="submit" value="Continue To Payment Checkout >")

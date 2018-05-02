@@ -1,0 +1,26 @@
+mixin menuCard(menulist = {})
+	.wrapband
+		.menuband
+			img(src="/images/menuimg.jpg")
+	.listWraper
+
+		each fooditem in menulist
+
+			.itemName
+				.itemlabels #{fooditem.itemname}
+				.editpannel
+					if user && fooditem.owner.equals(user._id)
+						.store__action.store__action--edit
+							a(href=`/newmenu/${fooditem._id}/edit`)
+								!= h.icon('pencil')
+							a(href=`/deleteitem/${fooditem._id}/${fooditem.restauid}/delete` title="Delete Item")
+								//-!= h.icon('foodmenutrash')
+								!= h.icon('pencil')
+			
+				.menudetails
+					.itemlabels Quantity: #{fooditem.measurement}
+
+					.itemlabels Description: #{fooditem.description}
+					.itemprice
+						p.itemlabels Price: #{fooditem.price}
+						p= fooditem.currsymbol

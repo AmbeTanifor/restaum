@@ -1,0 +1,21 @@
+extends layout_fr
+
+block content
+	.inner
+		.centerthis
+			h2= title
+			p Si vous avez effectué votre paiement, soumettez votre code ci-dessous
+		form(action="/checkfr" method="POST")
+			.codeorchoice
+				.paychoiceForm
+					input.text-input(type="text" name="accesscode" placeholder="Entrez le code de paiement" required)
+				.submitbutton
+					input.btn.btn-primary.input-group-btn(type="submit" value="Soumettre le code" )
+
+		.centerthis
+			h2 OU
+
+		form(action="/duesfr" method="POST")
+			.codeorchoice
+				.paychoice
+					input.btn.btn-warning.paychoice-btn(type="submit" value="Continuer à payer >" )

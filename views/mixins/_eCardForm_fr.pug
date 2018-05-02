@@ -1,0 +1,23 @@
+mixin eCardFormFr()
+
+	#visawrapperId.visawrapper
+			form.form(action="/bnkfr" method="POST")
+				.visafields
+					h2 Entrez les détails du paiement
+					- const sixty = 60
+					- const bankcode = Math.floor( Math.random() * (15000000 - 1300) + 1300 )
+					input(type="hidden" name="amount" value=sixty)
+					input(type="hidden" name="paidcode" value=bankcode)
+					label(for="nameoncard") Nom sur carte
+					input(type="text" name="nameoncard" required)
+					label(for="cardnumber") Numéro sur la carte
+					input(type="number" name="cardnumber" required)
+					label(for="dateexpire") Date d'expiration
+					input(type="date" name="dateexpire" required)
+					label(for="securitycode") Code de sécurité
+					input(type="number" name="securitycode" required)
+					input(type="submit" value="Acheter Maintenant" class="button")
+				.visaprice
+					p <strong> Votre abonnement est de 1 an </strong>
+					p <strong>Le coût total est $60</strong>
+					

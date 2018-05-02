@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	.inner
+		h2= title
+		.map
+			.autocomplete
+				input.autocomplete__input(type="text" placeholder="Search for restuarants: For best rsults, Start with [city, locality restaurant] or [city, restaurant] name" name="geolocate")
+			#map
+				p Loading Map...

@@ -1,0 +1,36 @@
+extends layout
+
+include mixins/_eCardForm
+include mixins/_paypalForm
+
+block content
+
+	.inner
+		h3= title
+
+		div#paypal-button
+
+		.payoptions-nav
+			- const visamethod = 229191
+			- const paypalmethod = 229191
+			
+			ul.payoptions.byvisa
+				a(href=`/ecard/${visamethod}`)
+					li
+			ul.payoptions.bypaypal
+				a(href=`/papalpay/${paypalmethod}`)
+					li
+			ul.payoptions.bym-mpesa
+				a(href="" id="")
+					li
+			
+		if pp
+			+payPalForm()
+
+		else if ec
+			+eCardForm()
+		else
+			+eCardForm()
+
+
+

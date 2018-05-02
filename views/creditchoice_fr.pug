@@ -1,0 +1,30 @@
+extends layout_fr
+
+include mixins/_eCardForm_fr
+include mixins/_paypalForm_fr
+
+block content
+	.inner
+		h3 S'IL VOUS PLAÎT FAIRE VOS PAIEMENTS
+
+		.payoptions-nav
+			- const visamethod = 229191
+			- const paypalmethod = paypal
+			
+			ul.payoptions.byvisa
+				a(href=`/visapayfr/${visamethod}`)
+					li
+			ul.payoptions.bypaypal
+				a(href=`/papalpayfr/${paypalmethod}`)
+					li
+			ul.payoptions.bym-mpesa
+				a(href="" id="")
+					li
+
+		if pp
+			+payPalFormFr()
+
+		else if ec
+			+eCardFormFr()
+		else
+			+eCardFormFr()
