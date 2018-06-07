@@ -151,6 +151,22 @@ exports.purchaseEmailFr = async (req, res) => {
 };
 // End of confirming email sent to customer after account is credited+++++++++++
 
+
+//***************************************************************
+// ++ ADMINISTRATOR PRIVILEGES ++++++++++++++++++++++++
+
+exports.adminAccess = async (req, res)=> {
+	const accesscode = Math.floor( Math.random() * (15000000 - 1300) + 1300 )
+	return res.redirect(`/market/${accesscode}`);
+};
+exports.adminAccessFr = async (req, res)=> {
+	const accesscode = Math.floor( Math.random() * (15000000 - 1300) + 1300 )
+	return res.redirect(`/marketfr/${accesscode}`);
+};
+
+// ++ 
+//***************************************************************
+
 // End of verify Access Code++++++++++++++++++++++++++++++++++++++++++++++
 exports.verifyCode = async (req, res) => {
 	const user = req.user._id;
@@ -168,7 +184,7 @@ exports.verifyCode = async (req, res) => {
 		} 	
 
 	}else{
-			req.flash('error', 'Sorry! You need to make a payment to set up your Restaurant/Store.');
+			req.flash('error', 'Please! You need to make a payment to set up your Restaurant/Store.');
 		return res.redirect('/dues'); 
 	}
 
@@ -188,8 +204,8 @@ exports.verifyCodeFr = async (req, res) => {
 		return res.redirect(`/marketfr/${req.body.accesscode}`);
 		}
 	}else{
-		req.flash('error', "Désolé! Ce code est invalide. Veuillez vérifier votre code et réessayer ou effectuer un paiement si vous ne l'avez pas fait");
-		return res.redirect('/bnkfr');
+		req.flash('error', "S'il vous plaît! Vous devez effectuer un paiement pour configurer votre restaurant / magasin");
+		return res.redirect('/duesfr');
 	}
 	
 	
