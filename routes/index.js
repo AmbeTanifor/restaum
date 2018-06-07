@@ -49,6 +49,10 @@ router.get('/addfr', authController.isLoggedInFr, catchErrors(authController.ver
 
 
 // Start of Adding New Restaurants+++++++++++++++++++++++++++++++++++++++++++
+//*************** ADMINISTRATOR PRIVILEGES *******************************
+router.get('/adminAcc', authController.isLoggedIn, authController.adminAccess);
+router.get('/adminAccfr', authController.isLoggedInFr, authController.adminAccessFr);
+//************************************************************************
 router.get('/market/:ga', authController.isLoggedIn, storeController.addStore);// ga stands for give access
 router.get('/marketfr/:ga', authController.isLoggedInFr, storeController.addStoreFr);
 // End of Adding New Restaurants++++++++++++++++++++++++++++++++++++++++++++++
@@ -179,3 +183,4 @@ router.post('/api/stores/:id/heart', catchErrors(storeController.heartStore));
 // // End of Hearting a store +++++++++++++++++++++++++++++++++++++++++++++++++++
 
 module.exports = router;
+
